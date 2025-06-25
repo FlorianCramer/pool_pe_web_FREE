@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/style/main.css">
+    <link rel="stylesheet" href="/src/style/mobile.css">
+    <link rel="icon" href="/assets/image/icon/web_icon.ico" type="image/x-icon">
+    <title>Impressum - Förderverein Freibad Penig e.V.</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>Förderverein Freibad Penig e.V.</h1>
+            </div>
+            <nav class="main-nav">
+                <a class="page_link" href="/index.html">Startseite</a>
+                <a class="page_link" href="/src/page/ueber_uns.html">Über uns</a>
+                <a class="page_link" href="/src/page/termine.html">Termine</a>
+                <a class="page_link" href="/src/page/spenden.html">Spenden</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="impressum">
+            <h2>Impressum</h2>
+            <p>
+                <strong>Förderverein Freibad Penig e.V. (Peniger Stadtbad)</strong><br>
+                <span id="impressum_adresse"></span>
+                <span id="impressum_telefonnummer"></span>
+                <span id="impressum_faxnummer"></span>
+
+                <span id="impressum_email"></span>
+            </p>
+            <p>
+                Gegründet am 05.04.2000<br>
+                Anerkennung als gemeinnütziger Verein: Finanzamt Mittweida, 27.06.2000<br>
+                <span id="impressum_steuernummer"></span>
+                Vereinsregister: Amtsgericht Chemnitz, VR 40941, Eintragung am 24.10.2000
+            </p>
+            <p>
+                <strong>Vorstand:</strong><br>
+                <span id="impressum_vorstand_name_1"></span><br>
+                <span id="impressum_vorstand_name_2"></span><br>
+                <span id="impressum_vorstand_name_3"></span><br>
+                <span id="impressum_vorstand_name_4"></span><br>
+                <span id="impressum_vorstand_name_5"></span>
+            </p>
+            <p>
+                <strong>Datenschutzbeauftragter:</strong><br>
+                <span id="impressum_datenschutzbeauftragter">fill_json_DATENSCHUTZBEAUFTRAGTER</span>
+            </p>
+            <hr>
+            <p>
+                Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir erheben, verarbeiten und nutzen Ihre Daten
+                ausschließlich im Rahmen der gesetzlichen Bestimmungen. Weitere Informationen finden Sie in unserer <a
+                    href="/src/page/datenschutz.html">Datenschutzerklärung</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <a href="/src/page/kontakt.html">Kontakt</a>
+        <a href="/src/page/datenschutz.html">Datenschutz</a>
+        <a href="/src/page/impressum.html">Impressum</a>
+    </footer>
+
+    <script>
+        fetch('/src/data/impressum.json')
+            .then(response => response.json())
+            .then(data => {
+                const ids = [
+                    'impressum_adresse',
+                    'impressum_telefonnummer',
+                    'impressum_faxnummer',
+                    'impressum_email',
+                    'impressum_steuernummer',
+                    'impressum_vorstand_name_1',
+                    'impressum_vorstand_name_2',
+                    'impressum_vorstand_name_3',
+                    'impressum_vorstand_name_4',
+                    'impressum_vorstand_name_5',
+                    'impressum_datenschutzbeauftragter'
+                ];
+                ids.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el && data[id]) el.textContent = data[id];
+                });
+            })
+            .catch(console.error);
+    </script>
+
+</body>
+
+</html>

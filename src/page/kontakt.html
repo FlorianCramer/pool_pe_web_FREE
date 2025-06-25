@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/style/main.css">
+    <link rel="stylesheet" href="/src/style/mobile.css">
+    <link rel="icon" href="/assets/image/icon/web_icon.ico" type="image/x-icon">
+    <title>Kontakt - Förderverein Freibad Penig e.V.</title>
+    <script src="/src/javascript/parallax_hero_img.js"></script>
+</head>
+
+<style>
+    .contact-form-section {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 32px 24px;
+        background: #f7f7f7;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+        animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        animation: fadeInLabel 0.7s forwards;
+    }
+
+    .contact-form label:nth-child(1) { animation-delay: 0.1s; }
+    .contact-form label:nth-child(3) { animation-delay: 0.2s; }
+    .contact-form label:nth-child(5) { animation-delay: 0.3s; }
+    .contact-form label:nth-child(7) { animation-delay: 0.4s; }
+
+    @keyframes fadeInLabel {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 22px;
+        border: 1.5px solid #bcd;
+        border-radius: 7px;
+        font-size: 1.05rem;
+        background: #fff;
+        transition: border-color 0.25s, box-shadow 0.25s;
+        box-sizing: border-box;
+        resize: none;
+        opacity: 0;
+        animation: fadeInInput 0.7s forwards;
+    }
+
+    .contact-form input:nth-child(2) { animation-delay: 0.15s; }
+    .contact-form input:nth-child(4) { animation-delay: 0.25s; }
+    .contact-form input:nth-child(6) { animation-delay: 0.35s; }
+    .contact-form textarea { animation-delay: 0.45s; }
+
+    @keyframes fadeInInput {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #2196f3;
+        outline: none;
+    }
+
+    .contact-form button[type="submit"] {
+        background: linear-gradient(90deg, #2196f3 0%, #1769aa 100%);
+        color: #fff;
+        border: none;
+        padding: 14px 0;
+        border-radius: 7px;
+        font-size: 1.08rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.25s, transform 0.18s, box-shadow 0.18s;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+        opacity: 0;
+        animation: fadeInButton 0.8s 0.55s forwards;
+    }
+
+    @keyframes fadeInButton {
+        from {
+            opacity: 0;
+            transform: scale(0.97);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .contact-form button[type="submit"]:hover {
+        background: linear-gradient(90deg, #1769aa 0%, #2196f3 100%);
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 6px 18px rgba(33, 150, 243, 0.13);
+    }
+</style>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>Förderverein Freibad Penig e.V.</h1>
+            </div>
+            <nav class="main-nav">
+                <a class="page_link" href="/index.html">Startseite</a>
+                <a class="page_link" href="/src/page/ueber_uns.html">Über uns</a>
+                <a class="page_link" href="/src/page/termine.html">Termine</a>
+                <a class="page_link" href="/src/page/spenden.html">Spenden</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-img">
+                <img src="/assets/image/index/sky_view.jpg" alt="Freibad Penig">
+            </div>
+            <div class="hero-content">
+                <h2>Kontakt</h2>
+                <p>
+                    Sie haben Fragen, Anregungen oder möchten mitmachen? Schreiben Sie uns gern über das
+                    Kontaktformular!
+                </p>
+            </div>
+        </div>
+        <div class="contact-form-section">
+            <form class="contact-form" action="mailto:info@freibad-penig.de" method="post" enctype="text/plain">
+                <label for="name">Ihr Name*</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Ihre E-Mail-Adresse*</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Betreff*</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Ihre Nachricht*</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Absenden</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <a href="/src/page/kontakt.html">Kontakt</a>
+        <a href="/src/page/datenschutz.html">Datenschutz</a>
+        <a href="/src/page/impressum.html">Impressum</a>
+    </footer>
+</body>
+
+</html>

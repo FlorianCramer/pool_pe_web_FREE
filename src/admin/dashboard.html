@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+    
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/image/icon/web_icon.ico" type="image/x-icon">
+    <title>Dashboard - Freibad Penig e.V.</title>
+    
+    <link rel="stylesheet" href="style/dashboard.css">
+    <script src="javascript/login/user_login_check.js"></script>
+</head>
+
+<body>
+    <div class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <div class="session-controls">
+            <div class="logout-timer" id="logoutTimer">
+                Session endet in: 30:00
+            </div>
+            <button class="logout-btn" id="logoutBtn">Abmelden</button>
+        </div>
+    </div>
+
+    <div class="display_error">
+        <h3>
+            Bitte benutzen Sie einen Breiteren Bildschirm oder Tablet, um den Admin-Bereich zu nutzen.
+        </h3>
+    </div>
+
+    <div class="dashboard-content">
+        <h3>Willkommen im Admin-Bereich</h3>
+        <p>Hier können die informationen auf der webseite angepasst werden</p>
+
+        <div class="adm_termine_content">
+            <h2>Termine</h2>
+            <table id="table_current_year">
+                <thead>
+                    <tr>
+                        <th>Terminname</th>
+                        <th>Datum</th>
+                        <th>Uhrzeit</th>
+                        <th>Ort (Adresse)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input id="ter_1_curr_year"  type="text" name="termin_1_current_year"  placeholder="Termin 1"> </td>
+                        <td><input id="dat_1_curr_year"  type="date" name="date_1_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_1_curr_year"  type="time" name="time_1_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_1_curr_year"  type="text" name="ort_1_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_2_curr_year"  type="text" name="termin_2_current_year"  placeholder="Termin 2"> </td>
+                        <td><input id="dat_2_curr_year"  type="date" name="date_2_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_2_curr_year"  type="time" name="time_2_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_2_curr_year"  type="text" name="ort_2_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_3_curr_year"  type="text" name="termin_3_current_year"  placeholder="Termin 3"> </td>
+                        <td><input id="dat_3_curr_year"  type="date" name="date_3_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_3_curr_year"  type="time" name="time_3_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_3_curr_year"  type="text" name="ort_3_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_4_curr_year"  type="text" name="termin_4_current_year"  placeholder="Termin 4"> </td>
+                        <td><input id="dat_4_curr_year"  type="date" name="date_4_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_4_curr_year"  type="time" name="time_4_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_4_curr_year"  type="text" name="ort_4_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_5_curr_year"  type="text" name="termin_5_current_year"  placeholder="Termin 5"> </td>
+                        <td><input id="dat_5_curr_year"  type="date" name="date_5_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_5_curr_year"  type="time" name="time_5_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_5_curr_year"  type="text" name="ort_5_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_6_curr_year"  type="text" name="termin_6_current_year"  placeholder="Termin 6"> </td>
+                        <td><input id="dat_6_curr_year"  type="date" name="date_6_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_6_curr_year"  type="time" name="time_6_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_6_curr_year"  type="text" name="ort_6_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_7_curr_year"  type="text" name="termin_7_current_year"  placeholder="Termin 7"> </td>
+                        <td><input id="dat_7_curr_year"  type="date" name="date_7_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_7_curr_year"  type="time" name="time_7_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_7_curr_year"  type="text" name="ort_7_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_8_curr_year"  type="text" name="termin_8_current_year"  placeholder="Termin 8"> </td>
+                        <td><input id="dat_8_curr_year"  type="date" name="date_8_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_8_curr_year"  type="time" name="time_8_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_8_curr_year"  type="text" name="ort_8_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_9_curr_year"  type="text" name="termin_9_current_year"  placeholder="Termin 9"> </td>
+                        <td><input id="dat_9_curr_year"  type="date" name="date_9_current_year"    placeholder="Datum">    </td>
+                        <td><input id="tim_9_curr_year"  type="time" name="time_9_current_year"    placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_9_curr_year"  type="text" name="ort_9_current_year"     placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_10_curr_year" type="text" name="termin_10_current_year" placeholder="Termin 10"></td>
+                        <td><input id="dat_10_curr_year" type="date" name="date_10_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_10_curr_year" type="time" name="time_10_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_10_curr_year" type="text" name="ort_10_current_year"    placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_11_curr_year" type="text" name="termin_11_current_year" placeholder="Termin 11"></td>
+                        <td><input id="dat_11_curr_year" type="date" name="date_11_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_11_curr_year" type="time" name="time_11_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_11_curr_year" type="text" name="ort_11_current_year"    placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_12_curr_year" type="text" name="termin_12_current_year" placeholder="Termin 12"></td>
+                        <td><input id="dat_12_curr_year" type="date" name="date_12_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_12_curr_year" type="time" name="time_12_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_12_curr_year" type="text" name="ort_12_current_year"    placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_13_curr_year" type="text" name="termin_13_current_year" placeholder="Termin 13"></td>
+                        <td><input id="dat_13_curr_year" type="date" name="date_13_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_13_curr_year" type="time" name="time_13_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_13_curr_year" type="text" name="ort_13_current_year"    placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_14_curr_year" type="text" name="termin_14_current_year" placeholder="Termin 14"></td>
+                        <td><input id="dat_14_curr_year" type="date" name="date_14_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_14_curr_year" type="time" name="time_14_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_14_curr_year" type="text" name="ort_14_current_year"    placeholder="Ort">      </td>
+                    </tr>
+                    <tr>
+                        <td><input id="ter_15_curr_year" type="text" name="termin_15_current_year" placeholder="Termin 15"></td>
+                        <td><input id="dat_15_curr_year" type="date" name="date_15_current_year"   placeholder="Datum">    </td>
+                        <td><input id="tim_15_curr_year" type="time" name="time_15_current_year"   placeholder="Uhrzeit">  </td>
+                        <td><input id="ort_15_curr_year" type="text" name="ort_15_current_year"    placeholder="Ort">      </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <button id="save_termine_curr_year">
+                Dieses Jahr speichern
+            </button>
+            <script src="javascript/data_trans/t_1_ermin_curr.js"></script>
+        </div>
+
+        <div class="adm_impressum_content">
+            <h2>Impressum</h2>
+            <p>Hier können Sie das Impressum anpassen.</p>
+            
+            <textarea name="impressum_adresse" id="impressum_adresse" placeholder="Adresse des Vorstandes hier eingeben"></textarea>
+            <input type="tel" name="impressum_telefonnummer" id="impressum_telefonnummer" placeholder="Telefonnummer hier eingeben">
+            <input type="tel" name="impressum_faxnummer" id="impressum_faxnummer" placeholder="Faxnummer hier eingeben">
+            <input type="email" name="impressum_email" id="impressum_email" placeholder="E-Mail-Adresse hier eingeben">
+
+            <input type="text" name="impressum_steuernummer" id="impressum_steuernummer" placeholder="Steuernummer hier eingeben">
+
+            <h5>Vorstand</h5>
+            <input type="text" name="impressum_vorstand_name_1" id="impressum_vorstand_name_1" placeholder="Name des Vorstandsmitglieds 1 hier eingeben">
+            <input type="text" name="impressum_vorstand_name_2" id="impressum_vorstand_name_2" placeholder="Name des Vorstandsmitglieds 2 hier eingeben">
+            <input type="text" name="impressum_vorstand_name_3" id="impressum_vorstand_name_3" placeholder="Name des Vorstandsmitglieds 3 hier eingeben">
+            <input type="text" name="impressum_vorstand_name_4" id="impressum_vorstand_name_4" placeholder="Name des Vorstandsmitglieds 4 hier eingeben">
+            <input type="text" name="impressum_vorstand_name_5" id="impressum_vorstand_name_5" placeholder="Name des Vorstandsmitglieds 5 hier eingeben">
+
+            <h5>Datenschutzbeauftragter</h5>
+            <input type="text" name="impressum_datenschutzbeauftragter" id="impressum_datenschutzbeauftragter" placeholder="Name des Datenschutzbeauftragten hier eingeben">
+            
+            <button id="save_impressum">Impressum speichern</button>
+            <script src="javascript/data_trans/impressum.js"></script>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

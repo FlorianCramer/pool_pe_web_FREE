@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/image/icon/web_icon.ico" type="image/x-icon">
+    <title>Login - Web_Admin Freibad Penig e.V.</title>
+
+    <link rel="stylesheet" href="style/login.css">
+    <script src="javascript/login/user_login.js"></script>
+</head>
+
+<body>
+    <main>
+        <div style="text-align: center;">
+            <h2>Freibad Penig</h2>
+        </div>
+
+        <div class="login-container">
+            <div class="login-error" id="loginError">
+                Falscher Benutzername oder Passwort. Bitte versuchen Sie es erneut.
+            </div>
+
+            <form class="login-form" id="loginForm" autocomplete="on">
+                <div class="form-group">
+                    <label for="username">Benutzername</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="login-btn">Anmelden</button>
+            </form>
+        </div>
+        <button onclick="window.location.href='/index.html'" class="login-btn back-btn">
+            Zurück zur Startseite
+        </button>
+    </main>
+</body>
+
+</html>

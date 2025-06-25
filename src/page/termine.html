@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/style/main.css">
+    <link rel="stylesheet" href="/src/style/mobile.css">
+    <link rel="icon" href="/assets/image/icon/web_icon.ico" type="image/x-icon">
+    <title>Termine - Förderverein Freibad Penig e.V.</title>
+    <script src="/src/javascript/parallax_hero_img.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>Förderverein Freibad Penig e.V.</h1>
+            </div>
+            <nav class="main-nav">
+                <a class="page_link" href="/index.html">Startseite</a>
+                <a class="page_link" href="/src/page/ueber_uns.html">Über uns</a>
+                <a class="page_link link_active" href="/src/page/termine.html">Termine</a>
+                <a class="page_link" href="/src/page/spenden.html">Spenden</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-img">
+                <img src="/assets/image/index/sky_view.jpg" alt="Freibad Penig">
+            </div>
+            <div class="hero-content">
+                <h2>Termine</h2>
+                <p>
+                    Hier finden Sie alle wichtigen Termine und Veranstaltungen rund um den Förderverein Freibad Penig
+                    e.V. Wir freuen uns auf Ihre Teilnahme!
+                </p>
+            </div>
+        </div>
+        <div class="info-box">
+            <strong>Nächste Veranstaltungen:</strong> Bleiben Sie informiert über unsere kommenden Aktionen,
+            Arbeitseinsätze und Events im Freibad Penig.
+        </div>
+        <div class="benefits-section" id="benefits-section">
+            <!-- Termine werden hier per JavaScript eingefügt -->
+        </div>
+        <script>
+            function formatDate(dateStr) {
+                // Unterstützt Formate wie yyyy-mm-dd oder dd.mm.yyyy
+                if (!dateStr) return '';
+                let d, m, y;
+                if (dateStr.includes('-')) {
+                    // yyyy-mm-dd
+                    [y, m, d] = dateStr.split('-');
+                } else if (dateStr.includes('.')) {
+                    // dd.mm.yyyy
+                    [d, m, y] = dateStr.split('.');
+                } else {
+                    return dateStr;
+                }
+                return `${d.padStart(2, '0')}.${m.padStart(2, '0')}.${y}`;
+            }
+
+            function isFutureOrToday(dateStr) {
+                if (!dateStr) return false;
+                let d, m, y;
+                if (dateStr.includes('-')) {
+                    [y, m, d] = dateStr.split('-');
+                } else if (dateStr.includes('.')) {
+                    [d, m, y] = dateStr.split('.');
+                } else {
+                    return false;
+                }
+                const eventDate = new Date(`${y}-${m}-${d}`);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                return eventDate >= today;
+            }
+
+            fetch('/src/data/t_1_ermin_curr.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('benefits-section');
+                    let i = 1;
+                    let found = false;
+                    while (true) {
+                        const title = data[`ter_${i}_curr_year`];
+                        const date = data[`dat_${i}_curr_year`];
+                        const time = data[`tim_${i}_curr_year`];
+                        const place = data[`ort_${i}_curr_year`];
+                        if (!title && !date && !time && !place) break;
+
+                        if (date && !isFutureOrToday(date)) {
+                            i++;
+                            continue;
+                        }
+
+                        let html = '<div class="benefit-card termine-card">';
+                        if (title) html += `<h3>${title}</h3>`;
+                        html += '<p>';
+                        if (date) html += `<strong>Datum:</strong> ${formatDate(date)}<br>`;
+                        if (time) html += `<strong>Uhrzeit:</strong> ${time}<br>`;
+                        if (place) html += `<strong>Ort:</strong> ${place}<br>`;
+                        html += '</p></div>';
+
+                        container.innerHTML += html;
+                        found = true;
+                        i++;
+                    }
+                    if (!found) {
+                        container.innerHTML = '<p>Keine kommenden Termine.</p>';
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('benefits-section').innerHTML = '<p>Termine konnten nicht geladen werden.</p>';
+                });
+        </script>
+    </main>
+
+
+
+    <footer>
+        <a href="/src/page/kontakt.html">Kontakt</a>
+        <a href="/src/page/datenschutz.html">Datenschutz</a>
+        <a href="/src/page/impressum.html">Impressum</a>
+    </footer>
+</body>
+
+</html>
